@@ -59,7 +59,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  MyLib, Caesar, Base64, Vigenere, RSA
+    exposed-modules:  Caesar, Base64, Vigenere, ModularArithmetic, RSA
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -99,6 +99,4 @@ test-suite Cryptographic-Protocols-test
 
     -- Test dependencies.
     build-depends:
-        base ^>=4.21.0.0,
-        Cryptographic-Protocols, 
-	MyLib, Caesar, Base64
+        base ^>=4.21.0.0, Cryptographic-Protocols, Caesar, Base64

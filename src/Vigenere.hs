@@ -1,13 +1,22 @@
-module Vigenere where
+-- | Vigenere cipher (standard).
+module Vigenere(encrypt, decrypt) where
 
 import Data.ShortWord(Word6)
 import Base64
 
-encrypt :: String -> String -> String
+-- | Encrypting function
+encrypt :: String -- ^ Key
+	-> String -- ^ Input
+	-> String
 encrypt key = convertWith (cencrypt (serial key))
 
-decrypt :: String -> String -> String
+-- | Decrypting function
+decrypt :: String -- ^ Key
+	-> String -- ^ Input
+	-> String
 decrypt key = convertWith (cdecrypt (serial key))
+
+-- AUXILIARS, BETWEEN [Nums]
 
 cencrypt :: [Word6] -> [Word6] -> [Word6]
 cencrypt key = zipWith (+) extKey
