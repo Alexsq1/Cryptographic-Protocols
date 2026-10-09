@@ -1,6 +1,6 @@
 -- | Modular Arithmetic basic operations.
 
-module ModularArithmetic(powMod, inv) where
+module ModularArithmetic(powMod, inv, primes, isPrime) where
 
 import Prelude hiding (gcd)
 
@@ -77,3 +77,18 @@ inv m a =
     (1, x, _) -> (x `mod` m)
     _         -> error ( (show a) 
     			++ " does not have an inverse in modulus " ++ (show m))
+
+-- | Lazy list of primes
+primes :: [Integer]
+primes = sieve [2..] where
+    sieve (p:xs) = p : sieve [x | x <- xs, x `mod` p /= 0]
+
+-- | Primality test, O(sqrt n)
+isPrime :: Integer -> Bool
+isPrime = primality primes
+    where
+    	primality :: [Integer] -> Integer -> Bool
+	primality (p:ps) n
+	    | p > floor (sqrt (fromIntegral n)) = True
+	    | otherwise = (n `mod` p /= 0) && primality ps n
+
