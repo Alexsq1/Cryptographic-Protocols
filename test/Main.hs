@@ -4,6 +4,7 @@ import Test.QuickCheck
 import Base64Test
 import CaesarTest
 import VigenTest
+import RSATest
 
 main :: IO ()
 main = do 
@@ -15,3 +16,6 @@ main = do
 
           putStrLn "Testing Vigenere:"
 	  vigenTest
+
+          putStrLn "Testing RSA:"
+	  rsaTest
