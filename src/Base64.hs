@@ -5,7 +5,6 @@ module Base64(serial, deserial, convertWith) where
 import Data.ShortWord(Word6)
 import Data.List(elemIndex)
 
-
 -- | Converts string to numbers in base 64
 serial :: String -> [Word6]
 serial = map charToNum

@@ -19,11 +19,13 @@ decrypt key = convertWith (cdecrypt (serial key))
 -- AUXILIARS, BETWEEN [Nums]
 
 cencrypt :: [Word6] -> [Word6] -> [Word6]
+cencrypt [] = id
 cencrypt key = zipWith (+) extKey
 	where
 		extKey = concat (repeat key)
 
 cdecrypt :: [Word6] -> [Word6] -> [Word6]
+cdecrypt [] m = m
 cdecrypt key m = zipWith (-) m (extKey)
 	where
 		extKey = concat (repeat key)

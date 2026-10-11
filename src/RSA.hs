@@ -6,15 +6,14 @@ import ModularArithmetic
 
 -- | Generates public and secret key
 keyGeneration :: Int -- ^ First arbitrary index
-		-> Int -- ^ Second arbitrary index
+		-> Int -- ^ Second arbitrary index, should be different than first
 		-> (Integer, Integer, Integer) -- ^ n, pKey, sKey
 keyGeneration a b = (n , pk, inv varphi pk )
 	    where
 	    	(p,q) = primeGeneration a b
 		n = p * q
 		varphi = phi p q
-		pk = last [ k | k <- [2 .. varphi - 10], gcd k varphi == 1 ]
-			-- bad selection of public key
+		pk = [ k | k <- [2 .. varphi - 2], gcd k varphi == 1 ] !! (a + b)
 
 -- | Generate 2 primes
 primeGeneration :: Int -- ^ First arbitrary index
