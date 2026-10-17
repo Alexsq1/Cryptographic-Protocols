@@ -1,6 +1,6 @@
 # Features:
 
-- Diffie-Hellman
+- Diffie-Hellman (progress)
 - ElGammal
 - Sigma-protocols
 
