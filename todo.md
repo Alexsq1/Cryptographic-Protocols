@@ -1,6 +1,5 @@
 # Features:
 
-- Diffie-Hellman (progress)
 - ElGammal
 - Sigma-protocols
 
@@ -11,6 +10,7 @@
 ## Caesar: correctness (same key) -> DONE
 ## Vigenere: correctness (same key) -> DONE
 ## RSA: correctness (same key) -> DONE
+## DH: correctness (same key) -> DONE
 
 ## Mod arithm: 
 - powmod equiv to other algs, correctness of div and conq? 
