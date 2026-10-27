@@ -83,7 +83,9 @@ test-suite Cryptographic-Protocols-test
     default-language: GHC2024
 
     -- Modules included in this executable, other than Main.
-    other-modules: Base64Test, CaesarTest
+    other-modules: Base64, Caesar, Vigenere, ModularArithmetic, 
+    	RSA, DiffieHellman, 
+    	Base64Test, CaesarTest, VigenTest, RSATest, DHTest
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:

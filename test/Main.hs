@@ -1,10 +1,11 @@
 module Main (main) where
 
-import Test.QuickCheck
+--import Test.QuickCheck
 import Base64Test
 import CaesarTest
 import VigenTest
 import RSATest
+import DHTest
 
 main :: IO ()
 main = do 
@@ -19,3 +20,6 @@ main = do
 
           putStrLn "Testing RSA:"
 	  rsaTest
+
+          putStrLn "Testing Diffie-Hellman:"
+	  dhTest
