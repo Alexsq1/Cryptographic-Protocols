@@ -1,6 +1,6 @@
 -- | Modular Arithmetic basic operations.
 
-module ModularArithmetic(powMod, inv, primes, isPrime) where
+module ModularArithmetic(powMod, inv, primes, isPrime, primeGeneration) where
 
 import Prelude hiding (gcd)
 
@@ -24,14 +24,6 @@ powMod base ex m = go 1 base ex
       | otherwise = go acc
 		         ((b * b) `mod` m)
                          (e `div` 2)
-
--- | Greatest common divisor by euclidean algorithm
---gcd :: Integer -> Integer -> Integer
---gcd a 0 = a
---gcd a b = gcd b r
---	where
---		r = a `mod` b
-
 
 -- | Calculates a particular solution (g, x, y) 
 -- of the diophantic equation a*x + b*y = g, where g = gcd(a,b).
@@ -91,4 +83,10 @@ isPrime = primality primes
 	primality (p:ps) n
 	    | p > floor (sqrt (fromIntegral n)) = True
 	    | otherwise = (n `mod` p /= 0) && primality ps n
+
+-- | Generate 2 primes
+primeGeneration :: Int -- ^ First arbitrary index
+		-> Int -- ^ Second arbitrary index
+		-> (Integer, Integer)
+primeGeneration n m = (primes !! abs n, primes !! abs m) 
 

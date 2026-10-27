@@ -15,11 +15,11 @@ keyGeneration a b = (n , pk, inv varphi pk )
 		varphi = phi p q
 		pk = [ k | k <- [2 .. varphi - 2], gcd k varphi == 1 ] !! (a + b)
 
--- | Generate 2 primes
-primeGeneration :: Int -- ^ First arbitrary index
-		-> Int -- ^ Second arbitrary index
-		-> (Integer, Integer)
-primeGeneration n m = (primes !! abs n, primes !! abs m) 
+---- | Generate 2 primes
+--primeGeneration :: Int -- ^ First arbitrary index
+--		-> Int -- ^ Second arbitrary index
+--		-> (Integer, Integer)
+--primeGeneration n m = (primes !! abs n, primes !! abs m) 
 
 phi :: Integer -> Integer -> Integer
 phi p q 

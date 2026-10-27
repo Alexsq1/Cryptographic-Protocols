@@ -59,7 +59,7 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  Caesar, Base64, Vigenere, ModularArithmetic, RSA
+    exposed-modules:  Caesar, Base64, Vigenere, ModularArithmetic, RSA, DiffieHellman
 
     -- Modules included in this library but not exported.
     -- other-modules:
