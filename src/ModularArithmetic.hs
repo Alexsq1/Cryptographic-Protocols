@@ -9,7 +9,13 @@ powMod :: Integer  -- ^ Base
 	-> Integer -- ^ Exponent
 	-> Integer -- ^ Modulus
 	-> Integer
-powMod base ex m = go 1 base ex
+powMod base ex m
+    -- Strange case: m = 1 (was returning 1, but every number is 0)
+    | m == 1 = 0
+    -- Standard case: ex >= 0
+    | ex >= 0 = go 1 base ex
+    -- Strange case: ex < 0 ==> b ^ (-e) = (b ^ -1) ^ e = (inv b) ^ e
+    | otherwise = powMod (inv m base) (abs ex) m
   where
     go acc _ 0 = acc
     go acc b e 
@@ -31,7 +37,10 @@ powMod base ex m = go 1 base ex
 diophantic :: Integer -- ^ a
 	-> Integer -- ^ b
 	-> (Integer, Integer, Integer)
-diophantic a 0 = (a, 1, 0)
+
+-- a >= 0 	==> a * 1 + 0 * 0 = a
+-- a < 0 	==> a * (-1) + 0 * 0 = (-a)
+diophantic a 0 = (abs a, signum a, 0)
 diophantic a b =
   let (g, x', y') = diophantic b (a `mod` b)
   in  (g, y', x' - (a `div` b) * y')
@@ -54,7 +63,7 @@ diophantic a b =
 --
 -- This is correct because:
 -- g = b x' + r y' = b (y + q x) + r x = 
--- b q x + b y + r x = (b q + r) x + b y = a x + b y = q
+-- b q x + b y + r x = (b q + r) x + b y = a x + b y = g
 --
 -- (Perhaps is not a proper proof, but gives us an idea of the values)
 --
@@ -77,7 +86,9 @@ primes = sieve [2..] where
 
 -- | Primality test, O(sqrt n)
 isPrime :: Integer -> Bool
-isPrime = primality primes
+isPrime n 
+    | n <= 1 = error "Primality is defined for numbers >= 2"
+    | otherwise = primality primes n
     where
     	primality :: [Integer] -> Integer -> Bool
 	primality (p:ps) n

@@ -4,6 +4,7 @@ module Main (main) where
 import Base64Test
 import CaesarTest
 import VigenTest
+import ModArithmTest
 import RSATest
 import DHTest
 
@@ -17,6 +18,9 @@ main = do
 
           putStrLn "Testing Vigenere:"
 	  vigenTest
+
+          putStrLn "Testing Modular arithmetic:"
+	  maTest
 
           putStrLn "Testing RSA:"
 	  rsaTest

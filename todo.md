@@ -13,7 +13,7 @@
 ## DH: correctness (same key) -> DONE
 
 ## Mod arithm: 
-- powmod equiv to other algs, correctness of div and conq? 
-- correctness of diphoantic (g = gcd, equation), refactor gcd, inv 
-- isPrime => primes contains it
-- phi correctness (num of primes)?
+- powmod equiv to other algs, correctness of div and conq -> DONE
+- correctness of diophantic (g = gcd, equation), refactor gcd, inv -> DONE
+- isPrime => primes contains it -> DONE
+- phi correctness (num of primes, using takeWhile)?
